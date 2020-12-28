@@ -1,0 +1,71 @@
+\documentclass[mathserif]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+
+\usepackage{geometry}
+\geometry{
+    inner=5mm,
+    outer=5mm,
+    top=0mm,
+    bottom=5mm
+}
+\usepackage{tikz}
+\usepackage{fontawesome}
+\usepackage{setspace}
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks = true,
+	urlcolor = blue,
+	linkcolor = black,
+}
+
+%%%%%%%%%%%%%%%%%%% - Alterações de Uso - %%%%%%%%%%%%%%%%%%
+\title{Título}
+\author{Autor(a)}
+\institute{Local/evento}
+\date{Data}
+%%%%%%%%%%%%%%% - Fim de Alterações de Uso - %%%%%%%%%%%%%%%
+
+\usetheme{Pittsburgh}
+\usefonttheme{serif}
+\beamertemplatenavigationsymbolsempty
+
+\setbeamertemplate{background canvas}{
+\begin{tikzpicture}
+    \shade [left color=gray,right color=gray!40!white]
+        (0,0) rectangle (\paperwidth,\paperheight);
+\end{tikzpicture}
+} 
+\setbeamercolor{title}{fg=black, bg=gray!40!white}
+\setbeamercolor{structure}{fg=black}
+\setbeamercolor{frametitle}{fg=black}
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{item projected}{fg=black, bg=gray!40!white}
+
+\newcommand{\criaQuadro}[3][0]{
+	\begin{frame}
+	\frametitle{#2}
+	\ifnum0#1>0 \section{#2} \fi
+	#3
+    \end{frame}
+}
+
+\begin{document}
+
+    \frame{\titlepage}
+    
+    \criaQuadro{Sumário}{
+        \tableofcontents
+    }
+    
+    \criaQuadro[1]{Título do slide 1}{
+        Corpo do slide (aparecendo no sumário)
+    }
+    
+    \criaQuadro{Título do slide 2}{
+        Corpo do slide (não aparecendo no sumário)
+    }
+
+\end{document}
